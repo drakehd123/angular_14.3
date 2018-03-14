@@ -1,0 +1,121 @@
+<mat-card>
+  <mat-card-content>
+    <h2 class="example-h2">Checkbox configuration</h2>
+
+    <section class="example-section">
+      <mat-checkbox class="example-margin" [(ngModel)]="checked">Checked</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">Indeterminate</mat-checkbox>
+    </section>
+
+    <section class="example-section">
+      <label class="example-margin">chap thuan:</label>
+      <mat-radio-group>
+        <mat-radio-button class="example-margin" value="start" (change)="onChange(true)">Start</mat-radio-button>
+        <mat-radio-button class="example-margin" value="end" (change)="onChange(false)">End</mat-radio-button>
+      </mat-radio-group>
+      <h3 *ngIf="isChange;else bb" [ngClass]="'aaa'">start</h3>
+      <ng-template #bb>
+        <h3 [ngClass]="'aaa'">end</h3>
+      </ng-template>
+
+
+
+    </section>
+
+    <section class="example-section">
+      <mat-checkbox class="example-margin" [(ngModel)]="disabled">Disabled</mat-checkbox>
+    </section>
+  </mat-card-content>
+</mat-card>
+
+
+<form action="" method="POST" role="form" #f="ngForm">
+  <legend>Form title</legend>
+
+  <div class="form-group">
+    <label for="">{{name}}</label>
+    <input type="text" class="form-control" [(ngModel)]="name" name="firstName" id="" placeholder="Input field">
+    <pre>
+      {{f.value | json}}
+    </pre>
+    <select name="gender" id="input${1/(\w+)/\u\1/g}" [(ngModel)]="gender" class="form-control" required="required">
+      <option value="1">nam</option>
+      <option value="0">nu</option>
+    </select>
+    <h2>{{ (gender == 0) ? 'nu' : 'nam'}}</h2>
+
+    <!--
+    <div class="radio">
+      <label>
+        <input type="checkbox" name="ck1" id=""  (click)="onChange(true)"> xac nhan
+      </label>
+      <label>
+        <input type="checkbox" name="ck2" id=""  (click)="onChange(false)"> khong xac nhan
+      </label>
+    </div>
+    <h2 *ngIf="isChange" else demo1>da chap thuan</h2>
+    <!-- <h2 *ngIf="!isChange">khong chap nhan</h2> -->
+    <ng-template #demo1>
+      <h2>khong chap nhan</h2>
+    </ng-template> -->
+
+
+  </div>
+
+
+
+
+
+  <button type="button" (click)="onClick()" class="btn btn-danger">{{name}}</button>
+
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title" [ngStyle]="{'font-style':'italic','font-weight':'bold'}">Panel title</h3>
+    </div>
+    <div class="panel-body" *ngIf="isShow">
+      {{global}}
+    </div>
+  </div>
+  <button class="btn" [ngClass]="'aaa'">
+    String binding
+  </button>
+
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>so luong</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let row of product ;index as i">
+        <td>{{i}}</td>
+        <td>{{row.name}}</td>
+        <td>{{row.so_luong}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ho va ten</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="array1">
+      <tr *ngFor=" let row of array1 ">
+        <td>{{row}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button type="button" class="btn btn-danger" (click)="loadData()">load data</button>
+
+<hr>
+
+  <button type="button" class="btn btn-danger" (click)="changeTab(1)">button1</button>
+  <button type="button" class="btn btn-danger" (click)="changeTab(2)">button2</button>
+  <button type="button" class="btn btn-danger" (click)="changeTab(3)">button3</button>
